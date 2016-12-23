@@ -1,0 +1,27 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+
+Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/ParameterLists:
+  Max: 10
+
+Style/IndentationConsistency:
+  EnforcedStyle: rails
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+ModuleLength:
+  Max: 120
