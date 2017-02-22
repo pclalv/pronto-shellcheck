@@ -71,7 +71,7 @@ module Pronto
       def new_message(offence, line)
         path = line.patch.delta.new_file[:path]
         level = SHELLCHECK_PRONTO_LEVELS[offence['level']]
-        message = "SC#{offence['code']}: #{offence['message']}"
+        message = "[SC#{offence['code']}](https://github.com/koalaman/shellcheck/wiki/SC#{offence['code']}): #{offence['message']}"
 
         Message.new(path, line, level, message, nil, self.class)
       end
