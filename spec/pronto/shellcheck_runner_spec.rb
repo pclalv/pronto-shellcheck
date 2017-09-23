@@ -74,7 +74,7 @@ module Pronto
 
         it 'has correct first message' do
           expect(run_results.first.msg)
-            .to eq "SC2084: Remove '$' or use '_=$((expr))' to avoid executing output."
+            .to eq "[SC2084](https://github.com/koalaman/shellcheck/wiki/SC2084): Remove '$' or use '_=$((expr))' to avoid executing output."
         end
 
         context "when shellcheck encounters a shell it doesn't support" do
