@@ -26,7 +26,12 @@ module Pronto
 
     class << self
       def shellcheckable?(path)
-        path_has_extension?(path) || file_has_shebang?(path)
+        regular_file?(path) &&
+          (path_has_extension?(path) || file_has_shebang?(path))
+      end
+
+      def regular_file?(path)
+        File.file?(path)
       end
 
       def path_has_extension?(path)

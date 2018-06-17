@@ -125,6 +125,14 @@ module Pronto
         end
       end
 
+      context 'when the path is a directory' do
+        let(:filename) { 'directory' }
+
+        it 'returns true' do
+          expect(described_class.shellcheckable?(path)).to be false
+        end
+      end
+
       context 'when the path has no extension' do
         context "and the shebang includes 'sh'" do
           let(:filename) { 'shebang-sh' }
