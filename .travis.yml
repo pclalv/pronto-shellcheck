@@ -3,11 +3,7 @@ dist: xenial
 language: ruby
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y --no-install-recommends ghc cabal-install
-  - sudo cabal update
-  - git clone https://github.com/koalaman/shellcheck.git
-  - cd shellcheck
-  - sudo cabal install
+  - sudo apt-get install -y shellcheck
 before_script:
   - export PATH="$HOME/.cabal/bin/:$PATH"
 rvm:
