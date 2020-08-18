@@ -6,6 +6,10 @@
 
 Pronto runner for [ShellCheck](https://www.shellcheck.net). [What is Pronto?](https://github.com/mmozuras/pronto)
 
+## Installation
+
+See this gem's page on [RubyGems.org][rubygems].
+
 ## Prerequisites
 
 You'll need to install [shellcheck by yourself](https://github.com/koalaman/shellcheck#installing). If `shellcheck` is in your `PATH`, everything will simply work.
@@ -14,4 +18,5 @@ You'll need to install [shellcheck by yourself](https://github.com/koalaman/shel
 
 Pass any options you would pass to `shellcheck` with the [`SHELLCHECK_OPTS` environment variable](shellcheck_opts) to `pronto run`; e.g., `SHELLCHECK_OPTS='-x' pronto run`.
 
-[shellcheck_opts]: [https://github.com/koalaman/shellcheck/wiki/Integration#allow-passing-through-or-configuring-the-environment-variable-shellcheck_opts]
+[shellcheck_opts]: https://github.com/koalaman/shellcheck/wiki/Integration#allow-passing-through-or-configuring-the-environment-variable-shellcheck_opts
+[rubygems]: https://rubygems.org/gems/pronto-shellcheck
