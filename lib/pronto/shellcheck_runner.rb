@@ -26,7 +26,7 @@ module Pronto
 
     class << self
       def shellcheckable?(path)
-        regular_file?(path) &&
+        shellcheck_installed? && regular_file?(path) &&
           (path_has_extension?(path) || file_has_shebang?(path))
       end
 
@@ -41,6 +41,18 @@ module Pronto
       def file_has_shebang?(path)
         shebang = File.readlines(path).first
         !(SHEBANG =~ shebang).nil?
+      end
+
+      def shellcheck_installed?
+        `shellcheck -V`
+
+        true
+      rescue Errno::ENOENT => _
+        if !@displayed_installation_warning
+          warn("WARNING: Shellcheck is not installed on your system. Ignoring the pronto runner")
+          @displayed_installation_warning = true
+        end
+        false
       end
     end
 
