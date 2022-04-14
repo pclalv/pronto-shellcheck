@@ -141,6 +141,26 @@ module Pronto
             expect(described_class.shellcheckable?(path)).to be true
           end
         end
+
+        context "and the file is a binary file with shebang that is invalid as UTF-8" do
+          let(:filename) { 'malformed_utf8_binary_file' }
+
+          it 'returns true' do
+            expect(File.read(path)).to_not be_valid_encoding
+
+            expect(described_class.shellcheckable?(path)).to be true
+          end
+        end
+
+        context "and the file is a binary file without shebang that is invalid as UTF-8" do
+          let(:filename) { 'no_shebang_malformed_utf8_binary_file' }
+
+          it 'returns false' do
+            expect(File.read(path)).to_not be_valid_encoding
+
+            expect(described_class.shellcheckable?(path)).to be false
+          end
+        end
       end
     end
   end
