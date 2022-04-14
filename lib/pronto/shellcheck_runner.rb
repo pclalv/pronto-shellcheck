@@ -7,6 +7,10 @@ module Pronto
 
     EXTENSION = /^\..*sh$/
     SHEBANG = %r{^#!/.*sh}
+    # It's probably overkill in most situations to check more than 128 bytes, but
+    #   https://www.in-ulm.de/~mascheck/various/shebang/#length
+    # suggests that on some systems a much longer SHEBANG line can be accepted.
+    MAXIMUM_SHEBANG_LINE_SIZE = 8192
     SHELLCHECK_PRONTO_LEVELS = {
       'style' => :info,
       'info' => :info,
@@ -39,8 +43,7 @@ module Pronto
       end
 
       def file_has_shebang?(path)
-        shebang = File.readlines(path).first
-        !(SHEBANG =~ shebang).nil?
+        SHEBANG.match?(File.binread(path, MAXIMUM_SHEBANG_LINE_SIZE))
       end
     end
 
